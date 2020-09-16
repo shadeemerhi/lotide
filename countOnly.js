@@ -12,7 +12,7 @@ const countOnly = function(allItems, itemsToCount) {
       }
     }
   }
-  return counted; 
+  return counted;
 }
 
 const assertEqual = function(actual, expected) {
