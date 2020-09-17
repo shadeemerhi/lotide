@@ -5,10 +5,9 @@ const takeUntil = (array, callback) => {
     if (! callback(item)) {
       newArray.push(item);
     } else {
-      break;
+      return newArray;
     }
   }
-  return newArray;
 };
 
 
