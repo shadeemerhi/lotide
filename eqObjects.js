@@ -7,10 +7,17 @@ const eqObjects = function(object1, object2) {
   }
 
   for (let key of keys1) {
-    if (!object2.hasOwnProperty(key)) {
+    if (! object2.hasOwnProperty(key)) {
       return false;
     }
-    if (Array.isArray(object1[key]) && Array.isArray(object2[key])) {
+
+    if (typeof object1[key] === 'object' && typeof object2[key] === 'object') {
+      // Recursive solution
+      if (! eqObjects(object1[key], object2[key])) {
+        return false;
+      };
+    }
+    else if (Array.isArray(object1[key]) && Array.isArray(object2[key])) {
       if (! eqArrays(object1[key], object2[key])) {
         return false;
       }
@@ -46,7 +53,9 @@ const assertEqual = function(actual, expected) {
 };
 
 
-// TESTING CASES
+// NON-NESTED OBJECT TEST CASES
+
+console.log('-----NON-NESTED OBJECT TEST CASES-----');
 const ab = { a: "1", b: "2" };
 const ba = { b: "2", a: "1" };
 console.log(eqObjects(ab, ba)); // => true
@@ -54,9 +63,18 @@ console.log(eqObjects(ab, ba)); // => true
 const abc = { a: "1", b: "2", c: "3" };
 console.log(eqObjects(ab, abc)); // => false
 
-const cd = { d: ["2", 3], c: "1", };
+const cd = { d: ["2", 3, 4], c: "1", };
 const dc = { c: "1", d: 5};
 console.log(eqObjects(cd, dc)); // => false
 
 const cd2 = { c: "1", d: ["2", 3, 4] };
-console.log(eqObjects(cd, cd2)); // => false
+console.log(eqObjects(cd, cd2)); // => true
+
+console.log();
+console.log('-----TESTED OBJECT TEST CASES-----');
+
+// NESTED OBJECTS TEST CASES
+console.log(eqObjects({ a: { z: 1 }, b: { f: { e: 'hi'} } }, { a: { z: 1 }, b: { f: { e: 'hi'} } })); // => true
+console.log(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: { f: { e: 'hi'} } })); // => false
+console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 })); // => false
+console.log();
