@@ -9,11 +9,3 @@ const assertEqualArrays = function(array1, array2) {
 }
 
 module.exports = assertEqualArrays;
-
-
-// TESTING
-// console.log(assertEqualArrays([1, 2, 3], [1, 2, 3]));
-// console.log(assertEqualArrays([1, 2, 3], [3, 2, 1]));
-
-// console.log(assertEqualArrays(["1", "2", "3"], ["1", "2", "3"]));
-// console.log(assertEqualArrays(["1", "2", "3"], ["1", "2", 3]));
