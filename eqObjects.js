@@ -52,6 +52,8 @@ const assertEqual = function(actual, expected) {
   }
 };
 
+module.exports = eqObjects;
+
 
 // NON-NESTED OBJECT TEST CASES
 

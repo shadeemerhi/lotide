@@ -1,4 +1,0 @@
-const assertEqual = require('../assertEqualConsole');
-
-assertEqual("Lighthouse Labs", "Lighthouse Labs");
-assertEqual(1, 3);

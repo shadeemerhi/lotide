@@ -15,3 +15,5 @@ const letterPositions = function(str) {
 }
 
 console.log(letterPositions('lighthouse in the house'));
+
+module.exports = letterPositions;

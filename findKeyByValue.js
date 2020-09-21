@@ -1,3 +1,5 @@
+const findKey = require("./findKey");
+
 const findKeyByValue = function(searchObj, valueWeWant) {
 
   let keys = Object.keys(searchObj);
@@ -16,3 +18,5 @@ const bestTVShowsByGenre = {
 };
 
 console.log(findKeyByValue(bestTVShowsByGenre, "Family Guy"));
+
+module.exports = findKeyByValue;
